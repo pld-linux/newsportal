@@ -46,8 +46,8 @@ przegl±darkê www.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT%{_wwwrootdir}/html/newsportal/{img,spool,doc,extras/{frames,lang}}
+
 install *.{php,inc,lang,txt} $RPM_BUILD_ROOT%{_wwwrootdir}/html/newsportal
 install img/* $RPM_BUILD_ROOT%{_wwwrootdir}/html/newsportal/img
 install doc/* $RPM_BUILD_ROOT%{_wwwrootdir}/html/newsportal/doc
