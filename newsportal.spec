@@ -42,11 +42,7 @@ czytania grup newsowych (przy u¿yciu protoko³u NNTP) przez
 przegl±darkê www.
 
 %prep
-cd $RPM_BUILD_DIR
-rm -rf %{name}-%{version}
-mkdir -p %{name}-%{version}
-cd %{name}-%{version}
-tar -xzf %{SOURCE0}
+%setup -q -c
 
 %install
 rm -rf $RPM_BUILD_ROOT
