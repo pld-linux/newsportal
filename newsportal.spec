@@ -63,8 +63,9 @@ echo %{_sysconfdir}/%{name} and update Your configuration to use new directory.
 
 %files
 %defattr(644,root,root,755)
+%doc doc/*
+%dir %{_sysconfdir}/%{name}
 %attr(640,root,http) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/%{name}/config.inc
 %attr(640,root,http) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/%{name}/groups.txt
 %{_datadir}/%{name}
-%attr(700,http,http) %dir /var/spool/%{name}/
-%doc doc/*
+%attr(700,http,http) %dir /var/spool/%{name}
