@@ -10,6 +10,7 @@ Source0:	http://florian-amrhein.de/newsportal/download/%{name}-%{version}.tar.gz
 URL:		http://florian-amrhein.de/newsportal/
 Requires:	apache
 Requires:	php
+Requires:	php-pcre
 Buildarch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
