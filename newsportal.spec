@@ -7,6 +7,7 @@ Release:	1
 License:	GPL
 Group:		Networking/News
 Source0:	http://florian-amrhein.de/newsportal/download/%{name}-%{version}.tar.gz
+# Source0-md5:	910c5ee171ea1358c5a491739fd80363
 URL:		http://florian-amrhein.de/newsportal/
 Requires:	apache
 Requires:	php
