@@ -5,7 +5,7 @@ Name:		newsportal
 Version:	0.24pre7
 Release:	1
 License:	GPL
-Group:		Networking/Communication
+Group:		Networking/News
 Source0:	http://florian-amrhein.de/newsportal/download/%{name}-%{version}.tar.gz
 URL:		http://florian-amrhein.de/newsportal/
 Requires:	apache
