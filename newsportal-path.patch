@@ -1,0 +1,103 @@
+diff -u NewsPortal-0.32/article-raw.php NewsPortal-0.32.new/article-raw.php
+--- NewsPortal-0.32/article-raw.php	2004-02-10 11:39:33.000000000 +0100
++++ NewsPortal-0.32.new/article-raw.php	2004-02-10 19:31:21.000000000 +0100
+@@ -1,6 +1,6 @@
+ <?
+   header("Expires: ".gmdate("D, d M Y H:i:s",time()+(3600*24))." GMT");
+-  include "config.inc.php";
++  include "/etc/newsportal/config.inc";
+     $attachment_delete_alternative=false;
+     $attachment_uudecode=false;
+ 
+diff -u NewsPortal-0.32/article.php NewsPortal-0.32.new/article.php
+--- NewsPortal-0.32/article.php	2004-02-10 11:39:33.000000000 +0100
++++ NewsPortal-0.32.new/article.php	2004-02-10 19:31:54.000000000 +0100
+@@ -5,7 +5,7 @@
+   $id=$_REQUEST["id"];
+   $group=$_REQUEST["group"];
+ 
+-  include "config.inc.php";
++  include "/etc/newsportal/config.inc";
+   include "auth.inc";
+   include "$file_newsportal";
+ 
+diff -u NewsPortal-0.32/attachment.php NewsPortal-0.32.new/attachment.php
+--- NewsPortal-0.32/attachment.php	2004-02-10 11:39:33.000000000 +0100
++++ NewsPortal-0.32.new/attachment.php	2004-02-10 19:32:23.000000000 +0100
+@@ -4,7 +4,7 @@
+ $id=$_REQUEST["id"];
+ $attachment=$_REQUEST["attachment"];
+ 
+-include "config.inc.php";
++include "/etc/newsportal/config.inc";
+ include "auth.inc";
+ require("$file_newsportal");
+ if (!isset($attachment))
+diff -u NewsPortal-0.32/config.inc.php NewsPortal-0.32.new/config.inc.php
+--- NewsPortal-0.32/config.inc.php	2004-02-10 11:39:33.000000000 +0100
++++ NewsPortal-0.32.new/config.inc.php	2004-02-10 19:30:33.000000000 +0100
+@@ -2,7 +2,7 @@
+ /*
+  * directories and files
+  */
+-$spooldir="spool";
++$spooldir="/var/spool/newsportal";
+ $imgdir="img";
+ $file_newsportal="newsportal.php";
+ $file_groups="index.php";
+diff -u NewsPortal-0.32/index.php NewsPortal-0.32.new/index.php
+--- NewsPortal-0.32/index.php	2004-02-10 11:39:33.000000000 +0100
++++ NewsPortal-0.32.new/index.php	2004-02-10 19:32:53.000000000 +0100
+@@ -1,6 +1,6 @@
+ <? header("Expires: ".gmdate("D, d M Y H:i:s",time()+7200)." GMT");
+ 
+-   include "config.inc.php";
++   include "/etc/newsportal/config.inc";
+    include "auth.inc";
+    include "head.inc"; ?>
+ 
+diff -u NewsPortal-0.32/newsportal.php NewsPortal-0.32.new/newsportal.php
+--- NewsPortal-0.32/newsportal.php	2004-02-10 13:38:01.000000000 +0100
++++ NewsPortal-0.32.new/newsportal.php	2004-02-10 19:34:25.000000000 +0100
+@@ -277,7 +277,7 @@
+ function testGroup($groupname) {
+   global $testgroup;
+   if ($testgroup) {
+-    $gf=fopen("groups.txt","r");
++    $gf=fopen("/etc/newsportal/groups.txt","r");
+     while (!feof($gf)) {
+       $read=trim(line_read($gf));
+       $pos=strpos($read," ");
+@@ -385,7 +385,7 @@
+   global $gl_age;
+   $ns=nntp_open($server,$port);
+   if ($ns == false) return false;
+-  $gf=fopen("groups.txt","r");
++  $gf=fopen("/etc/newsportal/groups.txt","r");
+   // if we want to mark groups with new articles with colors, wie will later
+   // need the format of the overview
+   $overviewformat=read_overviewformat($ns);
+diff -u NewsPortal-0.32/post.php NewsPortal-0.32.new/post.php
+--- NewsPortal-0.32/post.php	2004-02-10 11:39:32.000000000 +0100
++++ NewsPortal-0.32.new/post.php	2004-02-10 19:33:13.000000000 +0100
+@@ -34,7 +34,7 @@
+ @$id=$_REQUEST["id"];
+ if (!isset($group)) $group=$newsgroups;
+ 
+-include "config.inc.php";
++include "/etc/newsportal/config.inc";
+ include "auth.inc";
+ 
+ // Save name and email in cookies
+diff -u NewsPortal-0.32/thread.php NewsPortal-0.32.new/thread.php
+--- NewsPortal-0.32/thread.php	2004-02-10 11:39:33.000000000 +0100
++++ NewsPortal-0.32.new/thread.php	2004-02-10 19:33:36.000000000 +0100
+@@ -7,7 +7,7 @@
+   if(isset($_REQUEST["last"]))
+     $last=$_REQUEST["last"];
+ 
+-  include "config.inc.php";
++  include "/etc/newsportal/config.inc";
+ 
+   include "auth.inc";
+   $title.= ' - '.$group;
