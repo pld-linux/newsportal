@@ -1,26 +1,20 @@
-# TODO:
-# - trigger to change config name from config.inc to config.inc.php
 Summary:	News portal is a PHP based newsreader
 Summary(de):	PHP-Skript, welches den Zugriff auf Newsgruppen über Web ermöglicht
 Summary(pl):	Skrypt w PHP umo¿liwiaj±cy czytanie newsów przez przegl±darkê
 Name:		newsportal
-Version:	0.28
-Release:	0.1
+Version:	0.32
+Release:	1
 License:	GPL
 Group:		Networking/News
 Source0:	http://florian-amrhein.de/nw/newsportal/download/%{name}-%{version}.tar.gz
-# Source0-md5:	b33f8964ad75761a9a5ca91224c03187
+# Source0-md5:	923cf4722ad5fcb69c953ed1654e8d8c
+Patch0:		%{name}-path.patch
 URL:		http://florian-amrhein.de/newsportal/
 Requires:	apache
 Requires:	php
 Requires:	php-pcre
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_wwwrootdir	/home/services/httpd
-%define		_wwwuser	http
-%define		_wwwgroup	http
-
 
 %description
 This PHP script enables the access to a newsserver (by NNTP) from a
@@ -46,27 +40,31 @@ przegl±darkê www.
 
 %prep
 %setup -q -n NewsPortal-%{version}
+%patch0 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_wwwrootdir}/html/newsportal/{img,spool,doc,lang,extras/frames}
+install -d $RPM_BUILD_ROOT{%{_datadir}/%{name}/{img,doc,lang,extras/frames,lib},{/var/spool,%{_sysconfdir}}/%{name}}
 
-install *.{php,inc,txt} $RPM_BUILD_ROOT%{_wwwrootdir}/html/newsportal
-install img/* $RPM_BUILD_ROOT%{_wwwrootdir}/html/newsportal/img
-install lang/* $RPM_BUILD_ROOT%{_wwwrootdir}/html/newsportal/lang
-install extras/frames/* $RPM_BUILD_ROOT%{_wwwrootdir}/html/newsportal/extras/frames
+install *.{php,inc,txt} $RPM_BUILD_ROOT%{_datadir}/%{name}
+install img/* $RPM_BUILD_ROOT%{_datadir}/%{name}/img
+install lang/* $RPM_BUILD_ROOT%{_datadir}/%{name}/lang
+install lib/* $RPM_BUILD_ROOT%{_datadir}/%{name}/lib
+install extras/frames/* $RPM_BUILD_ROOT%{_datadir}/%{name}/extras/frames
+mv $RPM_BUILD_ROOT%{_datadir}/%{name}/config.inc.php $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/config.inc
+mv $RPM_BUILD_ROOT%{_datadir}/%{name}/groups.txt $RPM_BUILD_ROOT%{_sysconfdir}/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%triggerpostun -- newsportal < 0.27
+echo Please move config files from /home/services/httpd/html/newsportal to
+echo %{_sysconfdir}/%{name} and update Your configuration to use new directory.
+
 %files
 %defattr(644,root,root,755)
-%{_wwwrootdir}/html/newsportal/*.php
-%config(noreplace) %verify(not size mtime md5) %{_wwwrootdir}/html/newsportal/config.inc.php
-%config(noreplace) %verify(not size mtime md5) %{_wwwrootdir}/html/newsportal/groups.txt
-%{_wwwrootdir}/html/newsportal/*a*.inc
-%{_wwwrootdir}/html/newsportal/img/*
-%{_wwwrootdir}/html/newsportal/extras/*
-%{_wwwrootdir}/html/newsportal/lang/*
-%attr(700,%{_wwwuser},%{_wwwgroup}) %dir %{_wwwrootdir}/html/newsportal/spool
+%attr(640,root,http) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/%{name}/config.inc
+%attr(640,root,http) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/%{name}/groups.txt
+%{_datadir}/%{name}
+%attr(700,http,http) %dir /var/spool/%{name}/
 %doc doc/*
