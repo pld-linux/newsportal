@@ -2,12 +2,12 @@ Summary:	News portal is a PHP based newsreader
 Summary(de):	PHP-Skript, welches den Zugriff auf Newsgruppen über Web ermöglicht
 Summary(pl):	Skrypt w PHP umo¿liwiaj±cy czytanie newsów przez przegl±darkê
 Name:		newsportal
-Version:	0.24pre7
+Version:	0.27
 Release:	1
 License:	GPL
 Group:		Networking/News
-Source0:	http://florian-amrhein.de/newsportal/download/%{name}-%{version}.tar.gz
-# Source0-md5:	910c5ee171ea1358c5a491739fd80363
+Source0:	http://florian-amrhein.de/nw/newsportal/download/%{name}-%{version}.tar.gz
+# Source0-md5:	617142436b571bde636801523dede1d1
 URL:		http://florian-amrhein.de/newsportal/
 Requires:	apache
 Requires:	php
@@ -49,9 +49,8 @@ przegl±darkê www.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_wwwrootdir}/html/newsportal/{img,spool,doc,extras/{frames,lang}}
 
-install *.{php,inc,lang,txt} $RPM_BUILD_ROOT%{_wwwrootdir}/html/newsportal
+install *.{php,inc,txt} $RPM_BUILD_ROOT%{_wwwrootdir}/html/newsportal
 install img/* $RPM_BUILD_ROOT%{_wwwrootdir}/html/newsportal/img
-install doc/* $RPM_BUILD_ROOT%{_wwwrootdir}/html/newsportal/doc
 install extras/lang/* $RPM_BUILD_ROOT%{_wwwrootdir}/html/newsportal/extras/lang
 install extras/frames/* $RPM_BUILD_ROOT%{_wwwrootdir}/html/newsportal/extras/frames
 
@@ -63,7 +62,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_wwwrootdir}/html/newsportal/*.php
 %config(noreplace) %verify(not size mtime md5) %{_wwwrootdir}/html/newsportal/config.inc
 %{_wwwrootdir}/html/newsportal/*a*.inc
-%{_wwwrootdir}/html/newsportal/*.lang
 %{_wwwrootdir}/html/newsportal/*.txt
 %{_wwwrootdir}/html/newsportal/img/*
 %{_wwwrootdir}/html/newsportal/extras/*
