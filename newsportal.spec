@@ -12,7 +12,7 @@ URL:		http://florian-amrhein.de/newsportal/
 Requires:	apache
 Requires:	php
 Requires:	php-pcre
-Buildarch:	noarch
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_wwwrootdir	/home/services/httpd
