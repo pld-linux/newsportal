@@ -14,7 +14,7 @@ Requires:	php-pcre
 Buildarch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_wwwrootdir	/home/httpd
+%define		_wwwrootdir	/home/services/httpd
 %define		_wwwuser	http
 %define		_wwwgroup	http
 
