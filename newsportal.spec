@@ -36,7 +36,7 @@ zugreift.
 %description -l pl
 NewsPortal pozwala na utworzenie prostego i estetycznego interfejsu do
 czytania grup newsowych (przy u¿yciu protoko³u NNTP) przez
-przegl±darkê www.
+przegl±darkê WWW.
 
 %prep
 %setup -q -n NewsPortal-%{version}
