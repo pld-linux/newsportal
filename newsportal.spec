@@ -2,12 +2,12 @@ Summary:	News portal is a PHP based newsreader
 Summary(de):	PHP-Skript, welches den Zugriff auf Newsgruppen über Web ermöglicht
 Summary(pl):	Skrypt w PHP umo¿liwiaj±cy czytanie newsów przez przegl±darkê
 Name:		newsportal
-Version:	0.34
+Version:	0.36
 Release:	1
 License:	GPL
 Group:		Networking/News
 Source0:	http://florian-amrhein.de/nw/newsportal/download/%{name}-%{version}.tar.gz
-# Source0-md5:	e3260bc3a09b05ef16fbf4ca849d39dd
+# Source0-md5:	9f93d2b7e4f9dcf1eeca90d9477b4a68
 Patch0:		%{name}-path.patch
 URL:		http://florian-amrhein.de/newsportal/
 Requires:	apache
