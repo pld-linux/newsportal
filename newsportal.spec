@@ -10,7 +10,7 @@ Source0:	http://florian-amrhein.de/nw/newsportal/download/%{name}-%{version}.tar
 # Source0-md5:	9f93d2b7e4f9dcf1eeca90d9477b4a68
 Patch0:		%{name}-path.patch
 URL:		http://florian-amrhein.de/newsportal/
-Requires:	apache
+Requires:	webserver = apache
 Requires:	php
 Requires:	php-pcre
 BuildArch:	noarch
