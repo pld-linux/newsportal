@@ -10,9 +10,9 @@ Source0:	http://florian-amrhein.de/nw/newsportal/download/%{name}-%{version}.tar
 # Source0-md5:	9f93d2b7e4f9dcf1eeca90d9477b4a68
 Patch0:		%{name}-path.patch
 URL:		http://florian-amrhein.de/newsportal/
-Requires:	webserver = apache
 Requires:	php
 Requires:	php-pcre
+Requires:	webserver = apache
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -65,7 +65,7 @@ echo %{_sysconfdir}/%{name} and update Your configuration to use new directory.
 %defattr(644,root,root,755)
 %doc doc/*
 %dir %{_sysconfdir}/%{name}
-%attr(640,root,http) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/%{name}/config.inc
-%attr(640,root,http) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/%{name}/groups.txt
+%attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/config.inc
+%attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/groups.txt
 %{_datadir}/%{name}
 %attr(700,http,http) %dir /var/spool/%{name}
