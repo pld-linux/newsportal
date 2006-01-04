@@ -5,7 +5,7 @@ diff -burN NewsPortal-0.36.orig/article-raw.php NewsPortal-0.36/article-raw.php
  <?
    header("Expires: ".gmdate("D, d M Y H:i:s",time()+(3600*24))." GMT");
 -  include "config.inc.php";
-+  include "/etc/newsportal/config.inc";
++  include "/etc/webapps/newsportal/config.php";
      $attachment_delete_alternative=false;
      $attachment_uudecode=false;
  
@@ -17,7 +17,7 @@ diff -burN NewsPortal-0.36.orig/article.php NewsPortal-0.36/article.php
    $group=$_REQUEST["group"];
  
 -  include "config.inc.php";
-+  include "/etc/newsportal/config.inc";
++  include "/etc/webapps/newsportal/config.php";
    include "auth.inc";
    include "$file_newsportal";
  
@@ -29,7 +29,7 @@ diff -burN NewsPortal-0.36.orig/attachment.php NewsPortal-0.36/attachment.php
  $attachment=$_REQUEST["attachment"];
  
 -include "config.inc.php";
-+include "/etc/newsportal/config.inc";
++include "/etc/webapps/newsportal/config.php";
  include "auth.inc";
  require("$file_newsportal");
  if (!isset($attachment))
@@ -50,7 +50,7 @@ diff -burN NewsPortal-0.36.orig/config.inc.php NewsPortal-0.36/config.inc.php
  $file_language="lang/english.lang";
  $file_footer="";
 -$file_groups="groups.txt";
-+$file_groups="/etc/newsportal/groups.txt";
++$file_groups="/etc/webapps/newsportal/groups.txt";
  
  /* 
   * newsserver setup
@@ -61,7 +61,7 @@ diff -burN NewsPortal-0.36.orig/index.php NewsPortal-0.36/index.php
  <? header("Expires: ".gmdate("D, d M Y H:i:s",time()+7200)." GMT");
  
 -   include "config.inc.php";
-+   include "/etc/newsportal/config.inc";
++   include "/etc/webapps/newsportal/config.php";
     include "auth.inc";
     include "head.inc"; ?>
  
@@ -73,7 +73,7 @@ diff -burN NewsPortal-0.36.orig/post.php NewsPortal-0.36/post.php
  if (!isset($group)) $group=$newsgroups;
  
 -include "config.inc.php";
-+include "/etc/newsportal/config.inc";
++include "/etc/webapps/newsportal/config.php";
  include "auth.inc";
  
  // Save name and email in cookies
@@ -85,7 +85,7 @@ diff -burN NewsPortal-0.36.orig/thread.php NewsPortal-0.36/thread.php
      $last=intval($_REQUEST["last"]);
  
 -  include "config.inc.php";
-+  include "/etc/newsportal/config.inc";
++  include "/etc/webapps/newsportal/config.php";
  
    include "auth.inc";
    $title.= ' - '.$group;
