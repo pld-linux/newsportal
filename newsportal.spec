@@ -11,7 +11,7 @@ Source0:	http://florian-amrhein.de/nw/newsportal/download/%{name}-%{version}.tar
 Source1:	%{name}-apache.conf
 Patch0:		%{name}-path.patch
 URL:		http://florian-amrhein.de/newsportal/
-BuildRequires:	rpmbuild(macros) >= 1.264
+BuildRequires:	rpmbuild(macros) >= 1.268
 Requires:	php
 Requires:	php-pcre
 Requires:	php-iconv
@@ -100,16 +100,12 @@ fi
 # no earlier registration. autodetect based on installed webservers
 if [ -d /etc/apache/webapps.d ]; then
 	/usr/sbin/webapp register apache %{_webapp}
-	if [ -f /var/lock/subsys/apache ]; then
-		/etc/rc.d/init.d/apache reload 1>&2
-	fi
+	%service apache reload
 fi
 
 if [ -d /etc/httpd/webapps.d ]; then
 	/usr/sbin/webapp register httpd %{_webapp}
-	if [ -f /var/lock/subsys/httpd ]; then
-		/etc/rc.d/init.d/httpd reload 1>&2
-	fi
+	%service httpd reload
 fi
 
 %files
