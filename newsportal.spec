@@ -3,7 +3,7 @@ Summary(de):	PHP-Skript, welches den Zugriff auf Newsgruppen über Web ermöglicht
 Summary(pl):	Skrypt w PHP umo¿liwiaj±cy czytanie newsów przez przegl±darkê
 Name:		newsportal
 Version:	0.36
-Release:	2
+Release:	3
 License:	GPL
 Group:		Networking/News
 Source0:	http://florian-amrhein.de/nw/newsportal/download/%{name}-%{version}.tar.gz
