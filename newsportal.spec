@@ -13,8 +13,9 @@ Patch0:		%{name}-path.patch
 URL:		http://florian-amrhein.de/newsportal/
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires:	php
-Requires:	php-pcre
 Requires:	php-iconv
+Requires:	php-pcre
+Requires:	webapps
 Requires:	webserver = apache
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -100,12 +101,12 @@ fi
 # no earlier registration. autodetect based on installed webservers
 if [ -d /etc/apache/webapps.d ]; then
 	/usr/sbin/webapp register apache %{_webapp}
-	%service apache reload
+	%service -q apache reload
 fi
 
 if [ -d /etc/httpd/webapps.d ]; then
 	/usr/sbin/webapp register httpd %{_webapp}
-	%service httpd reload
+	%service -q httpd reload
 fi
 
 %files
