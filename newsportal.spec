@@ -1,6 +1,6 @@
 Summary:	News portal is a PHP based newsreader
-Summary(de):	PHP-Skript, welches den Zugriff auf Newsgruppen über Web ermöglicht
-Summary(pl):	Skrypt w PHP umo¿liwiaj±cy czytanie newsów przez przegl±darkê
+Summary(de.UTF-8):   PHP-Skript, welches den Zugriff auf Newsgruppen Ã¼ber Web ermÃ¶glicht
+Summary(pl.UTF-8):   Skrypt w PHP umoÅ¼liwiajÄ…cy czytanie newsÃ³w przez przeglÄ…darkÄ™
 Name:		newsportal
 Version:	0.36
 Release:	5
@@ -32,20 +32,20 @@ script is also suitable for presentation of announce newsgroups on web
 pages, without having the user notice that he is in fact accessing a
 news server.
 
-%description -l de
+%description -l de.UTF-8
 NewsPortal ist ein PHP-Skript, welches den Zugriff auf Newsgruppen
-über Web ermöglicht. Diese Skriptsammlung ermöglicht von einer
+Ã¼ber Web ermÃ¶glicht. Diese Skriptsammlung ermÃ¶glicht von einer
 Webseite aus den Zugriff auf einen Newsserver (per NNTP). Man kann
-damit Webforen und Newsgruppen verbinden, so daß auf ein "Webforum"
+damit Webforen und Newsgruppen verbinden, so daÃŸ auf ein "Webforum"
 auch per NNTP zugegriffen werden kann. Dieses Skript eignet sich auch
-für die Präsentation von Announce-Newsgruppen auf Webseiten, ohne daß
-der Benutzer merkt, daß er in Wirklichkeit auf einen Newsserver
+fÃ¼r die PrÃ¤sentation von Announce-Newsgruppen auf Webseiten, ohne daÃŸ
+der Benutzer merkt, daÃŸ er in Wirklichkeit auf einen Newsserver
 zugreift.
 
-%description -l pl
+%description -l pl.UTF-8
 NewsPortal pozwala na utworzenie prostego i estetycznego interfejsu do
-czytania grup newsowych (przy u¿yciu protoko³u NNTP) przez
-przegl±darkê WWW.
+czytania grup newsowych (przy uÅ¼yciu protokoÅ‚u NNTP) przez
+przeglÄ…darkÄ™ WWW.
 
 %prep
 %setup -q -n NewsPortal-%{version}
