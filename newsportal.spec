@@ -1,6 +1,6 @@
 Summary:	News portal is a PHP based newsreader
-Summary(de.UTF-8):   PHP-Skript, welches den Zugriff auf Newsgruppen über Web ermöglicht
-Summary(pl.UTF-8):   Skrypt w PHP umożliwiający czytanie newsów przez przeglądarkę
+Summary(de.UTF-8):	PHP-Skript, welches den Zugriff auf Newsgruppen über Web ermöglicht
+Summary(pl.UTF-8):	Skrypt w PHP umożliwiający czytanie newsów przez przeglądarkę
 Name:		newsportal
 Version:	0.36
 Release:	5
