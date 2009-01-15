@@ -2,12 +2,12 @@ Summary:	News portal is a PHP based newsreader
 Summary(de.UTF-8):	PHP-Skript, welches den Zugriff auf Newsgruppen über Web ermöglicht
 Summary(pl.UTF-8):	Skrypt w PHP umożliwiający czytanie newsów przez przeglądarkę
 Name:		newsportal
-Version:	0.36
-Release:	5
+Version:	0.38
+Release:	1
 License:	GPL
 Group:		Networking/News
 Source0:	http://florian-amrhein.de/nw/newsportal/download/%{name}-%{version}.tar.gz
-# Source0-md5:	9f93d2b7e4f9dcf1eeca90d9477b4a68
+# Source0-md5:	8f8828711acc1a6eb498e45fbc4e517f
 Source1:	%{name}-apache.conf
 Patch0:		%{name}-path.patch
 URL:		http://florian-amrhein.de/newsportal/
@@ -53,13 +53,16 @@ przeglądarkę WWW.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_appdir}/{img,doc,lang,extras/frames,lib},{/var/spool/%{name},%{_sysconfdir}}}
+install -d $RPM_BUILD_ROOT{%{_appdir}/{img,extras/cancel,extras/registration,extras/rss,extras/white-images,doc,lang,lib},{/var/spool/%{name},%{_sysconfdir}}}
 
 install *.{php,inc,txt,css} $RPM_BUILD_ROOT%{_appdir}
+install extras/cancel/* $RPM_BUILD_ROOT%{_appdir}/extras/cancel
+install extras/registration/* $RPM_BUILD_ROOT%{_appdir}/extras/registration
+install extras/rss/* $RPM_BUILD_ROOT%{_appdir}/extras/rss
+install extras/white-images/* $RPM_BUILD_ROOT%{_appdir}/extras/white-images
 install img/* $RPM_BUILD_ROOT%{_appdir}/img
-install lang/* $RPM_BUILD_ROOT%{_appdir}/lang
-install lib/* $RPM_BUILD_ROOT%{_appdir}/lib
-install extras/frames/* $RPM_BUILD_ROOT%{_appdir}/extras/frames
+install lang/*.lang $RPM_BUILD_ROOT%{_appdir}/lang
+install lib/*.{php,inc} $RPM_BUILD_ROOT%{_appdir}/lib
 mv $RPM_BUILD_ROOT%{_appdir}/config.inc.php $RPM_BUILD_ROOT%{_sysconfdir}/config.php
 mv $RPM_BUILD_ROOT%{_appdir}/groups.txt $RPM_BUILD_ROOT%{_sysconfdir}/groups.txt
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/apache.conf
