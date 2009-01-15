@@ -1,30 +1,19 @@
-diff -burN NewsPortal-0.36.orig/article-raw.php NewsPortal-0.36/article-raw.php
---- NewsPortal-0.36.orig/article-raw.php	2005-01-10 10:57:07.812216672 +0100
-+++ NewsPortal-0.36/article-raw.php	2005-01-10 10:57:44.792594800 +0100
-@@ -1,6 +1,6 @@
- <?
-   header("Expires: ".gmdate("D, d M Y H:i:s",time()+(3600*24))." GMT");
--  include "config.inc.php";
-+  include "/etc/webapps/newsportal/config.php";
-     $attachment_delete_alternative=false;
-     $attachment_uudecode=false;
- 
-diff -burN NewsPortal-0.36.orig/article.php NewsPortal-0.36/article.php
---- NewsPortal-0.36.orig/article.php	2005-01-10 10:57:07.813216520 +0100
-+++ NewsPortal-0.36/article.php	2005-01-10 10:57:58.445519240 +0100
-@@ -5,7 +5,7 @@
+diff -burNp NewsPortal-0.38/article.php NewsPortal-0.38-new/article.php
+--- NewsPortal-0.38/article.php	2006-10-08 12:23:18.000000000 +0200
++++ NewsPortal-0.38-new/article.php	2009-01-15 11:51:58.634806113 +0100
+@@ -6,7 +6,7 @@
    $id=$_REQUEST["id"];
    $group=$_REQUEST["group"];
  
 -  include "config.inc.php";
 +  include "/etc/webapps/newsportal/config.php";
-   include "auth.inc";
-   include "$file_newsportal";
  
-diff -burN NewsPortal-0.36.orig/attachment.php NewsPortal-0.36/attachment.php
---- NewsPortal-0.36.orig/attachment.php	2005-01-10 10:57:07.813216520 +0100
-+++ NewsPortal-0.36/attachment.php	2005-01-10 10:58:10.155739016 +0100
-@@ -4,7 +4,7 @@
+   /*
+   $thread_show["replies"]=true;
+diff -burNp NewsPortal-0.38/attachment.php NewsPortal-0.38-new/attachment.php
+--- NewsPortal-0.38/attachment.php	2006-10-08 12:23:18.000000000 +0200
++++ NewsPortal-0.38-new/attachment.php	2009-01-15 11:52:15.838554484 +0100
+@@ -4,7 +4,7 @@ $group=$_REQUEST["group"];
  $id=$_REQUEST["id"];
  $attachment=$_REQUEST["attachment"];
  
@@ -33,9 +22,9 @@ diff -burN NewsPortal-0.36.orig/attachment.php NewsPortal-0.36/attachment.php
  include "auth.inc";
  require("$file_newsportal");
  if (!isset($attachment))
-diff -burN NewsPortal-0.36.orig/config.inc.php NewsPortal-0.36/config.inc.php
---- NewsPortal-0.36.orig/config.inc.php	2005-01-10 10:57:07.812216672 +0100
-+++ NewsPortal-0.36/config.inc.php	2005-01-10 10:59:41.505851688 +0100
+diff -burNp NewsPortal-0.38/config.inc.php NewsPortal-0.38-new/config.inc.php
+--- NewsPortal-0.38/config.inc.php	2008-07-16 12:18:46.000000000 +0200
++++ NewsPortal-0.38-new/config.inc.php	2009-01-15 11:53:18.234801158 +0100
 @@ -2,7 +2,7 @@
  /*
   * directories and files
@@ -45,7 +34,7 @@ diff -burN NewsPortal-0.36.orig/config.inc.php NewsPortal-0.36/config.inc.php
  $imgdir="img";
  $file_newsportal="newsportal.php";
  $file_index="index.php";
-@@ -14,7 +14,7 @@
+@@ -14,7 +14,7 @@ $file_post="post.php";
  $file_cancel="cancel.php";
  $file_language="lang/english.lang";
  $file_footer="";
@@ -54,9 +43,9 @@ diff -burN NewsPortal-0.36.orig/config.inc.php NewsPortal-0.36/config.inc.php
  
  /* 
   * newsserver setup
-diff -burN NewsPortal-0.36.orig/index.php NewsPortal-0.36/index.php
---- NewsPortal-0.36.orig/index.php	2005-01-10 10:57:07.813216520 +0100
-+++ NewsPortal-0.36/index.php	2005-01-10 10:58:46.264249688 +0100
+diff -burNp NewsPortal-0.38/index.php NewsPortal-0.38-new/index.php
+--- NewsPortal-0.38/index.php	2006-10-08 12:23:18.000000000 +0200
++++ NewsPortal-0.38-new/index.php	2009-01-15 11:54:11.311458999 +0100
 @@ -1,6 +1,6 @@
  <? header("Expires: ".gmdate("D, d M Y H:i:s",time()+7200)." GMT");
  
@@ -65,27 +54,27 @@ diff -burN NewsPortal-0.36.orig/index.php NewsPortal-0.36/index.php
     include "auth.inc";
     include "head.inc"; ?>
  
-diff -burN NewsPortal-0.36.orig/post.php NewsPortal-0.36/post.php
---- NewsPortal-0.36.orig/post.php	2005-01-10 10:57:07.814216368 +0100
-+++ NewsPortal-0.36/post.php	2005-01-10 10:59:17.577489352 +0100
-@@ -34,7 +34,7 @@
- @$id=$_REQUEST["id"];
- if (!isset($group)) $group=$newsgroups;
+diff -burNp NewsPortal-0.38/post.php NewsPortal-0.38-new/post.php
+--- NewsPortal-0.38/post.php	2008-07-16 11:58:48.000000000 +0200
++++ NewsPortal-0.38-new/post.php	2009-01-15 11:54:39.371456502 +0100
+@@ -20,7 +20,7 @@
+  *  along with this program; if not, write to the Free Software
+  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+  */
+-include "config.inc.php";
++include "/etc/webapps/newsportal/config.php";
+ 
+ @$fieldnamedecrypt=$_REQUEST['fielddecrypt'];
+ //@$newsgroups=$_REQUEST["newsgroups"];
+diff -burNp NewsPortal-0.38/thread.php NewsPortal-0.38-new/thread.php
+--- NewsPortal-0.38/thread.php	2008-07-16 11:50:44.000000000 +0200
++++ NewsPortal-0.38-new/thread.php	2009-01-15 11:55:08.748536889 +0100
+@@ -8,7 +8,7 @@ if(isset($_REQUEST["first"]))
+ if(isset($_REQUEST["last"]))
+   $last=intval($_REQUEST["last"]);
  
 -include "config.inc.php";
 +include "/etc/webapps/newsportal/config.php";
+ include("$file_newsportal");
  include "auth.inc";
- 
- // Save name and email in cookies
-diff -burN NewsPortal-0.36.orig/thread.php NewsPortal-0.36/thread.php
---- NewsPortal-0.36.orig/thread.php	2005-01-10 10:57:07.812216672 +0100
-+++ NewsPortal-0.36/thread.php	2005-01-10 10:59:28.401843800 +0100
-@@ -7,7 +7,7 @@
-   if(isset($_REQUEST["last"]))
-     $last=intval($_REQUEST["last"]);
- 
--  include "config.inc.php";
-+  include "/etc/webapps/newsportal/config.php";
- 
-   include "auth.inc";
-   $title.= ' - '.$group;
+ $title.= ' - '.$group;
